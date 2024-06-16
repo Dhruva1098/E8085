@@ -1,20 +1,15 @@
-// EMU8085.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "flag.cpp"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+uint8_t MEMORY[0xFF]; //__init__ memory 256x8 bytes
+uint8_t GPR[6]; //general purpose registers
+uint8_t SPR[3]; //special purpose registers
+uint16_t program_counter;
+uint16_t stack_pointer;
+
+int main() {
+	GPR[B] = 1;
+	GPR[C] = 0;
+	uint16_t* ptr = (uint16_t *) & GPR[B];
+	std::cout << unsigned(*ptr);
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
