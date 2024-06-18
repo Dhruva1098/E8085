@@ -1,12 +1,12 @@
 #include "flag.h"
+#include "instruction_set.h"
 
 #include <iostream>
-
-uint8_t MEMORY[0xFF]; //__init__ memory 256x8 bytes
-uint8_t GPR[6]; //general purpose registers
-uint8_t SPR[3]; //special purpose registers
-uint16_t program_counter;
-uint16_t stack_pointer;
+#include <string>
+#include <vector>
 
 int main() {
+	MEMORY[0x0000] = 42;
+	MOV(0x0000, (uint8_t)18);
+	std::cout << (unsigned)MEMORY[0x0000];
 }
