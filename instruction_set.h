@@ -12,6 +12,7 @@ enum {
     LDA,
     LDAX,
     STA,
+    XCHG
 }
 
 void MOV(uint8_t R, uint16_t M);
