@@ -49,11 +49,11 @@ void SPHL() {  // working
     stack_pointer = (uint16_t)GPR[H];
 }
 // STACK OPERATIONS
-void PUSH(uint8_t R){
+void PUSH(uint8_t R) {
     if (R <= 5) { STACK.push_stack(GPR[R]);
     } else { std::cout << "ERROR:UNEXPECTED ADDRESS"; }
 }
-void POP(uint8_t R){
+void POP(uint8_t R) {
     if (R <= 5) { GPR[R] = STACK.pop_stack();
     } else { std::cout << "ERROR:UNEXPECTED ADDRESS"; }
 }
