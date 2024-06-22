@@ -11,8 +11,3 @@ void MOV(uint8_t R, uint16_t M);
 void MOV(uint16_t M, uint8_t data);
 void MVI(uint8_t R, uint8_t data);
 void LDA(uint16_t M);
-
-
-
-
-
