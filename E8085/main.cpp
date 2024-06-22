@@ -1,16 +1,10 @@
-//
-//  main.cpp
-//  E8085
-//
-//  Created by Dhruva Sharma on 21/06/24.
-//
-
-#include "flag.h"
-#include "instruction_set.hpp"
-
+// Copyright 2024 Dhruva Sharma
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "headers/flag.h"
+#include "headers/instruction_set.hpp"
 
 int main() {
     MEMORY[0x0000] = 42;

@@ -1,20 +1,15 @@
-//
-//  flag.h
-//  E8085
-//
-//  Created by Dhruva Sharma on 21/06/24.
-//
+// Copyright 2024 Dhruva Sharma
 
-#ifndef flag_h
-#define flag_h
+#ifndef E8085_HEADERS_FLAG_H_
+#define E8085_HEADERS_FLAG_H_
 
 #include <iostream>
 
 class _FLAG_ {
     uint8_t FLAG;
-public:
+
+ public:
     _FLAG_() :FLAG(0) {};
-    
     bool get_sign() {
         return unsigned(FLAG << 7);
     }
@@ -81,4 +76,4 @@ enum {
     ACC
 };
 
-#endif /* flag_h */
+#endif  // E8085_HEADERS_FLAG_H_
