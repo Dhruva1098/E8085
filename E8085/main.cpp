@@ -8,6 +8,14 @@
 
 int main() {
     MEMORY[0x0000] = 42;
-    MOV(0x0000, (uint8_t)18);
-    std::cout << (unsigned)MEMORY[0x0000];
+    MOV((uint16_t)0x0001, 11);
+    MVI(H, 0x01);
+    MVI(L, 0x00);  // little endian, read as LH not HL
+    LDAX(B);
+    STA(0x0001);
+    STAX(B);
+    SPHL();
+    std::cout << (unsigned)SPR[ACC] << "\n"<< (unsigned)GPR[B]
+    << "\n" << (unsigned)MEMORY[0x0001] << "\n" <<
+    (unsigned)stack_pointer << "\n";
 }
