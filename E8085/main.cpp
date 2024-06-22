@@ -9,8 +9,7 @@
 int main() {
     MEMORY[0x0000] = 42;
     MOV((uint16_t)0x0001, 11);
-    MVI(H, 0x01);
-    MVI(L, 0x00);  // little endian, read as LH not HL
+    LHLD(0x0001);
     LDAX(B);
     STA(0x0001);
     STAX(B);
