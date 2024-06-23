@@ -49,25 +49,25 @@ enum{
     _AMC
 };
 
-void MOV_RM(uint8_t R, uint16_t M);
-void MOV_MD(uint16_t M, uint8_t data);
-void MVI(uint8_t R, uint8_t data);
-void LDA(uint16_t M);
-void LDAX(uint8_t R);
-void LHLD(uint16_t M);
-void STA(uint16_t M);
-void STAX(uint8_t R);
+void MOV_RM(const uint8_t& R, const uint16_t& M);
+void MOV_MD(const uint16_t& M, const uint8_t& data);
+void MVI(const uint8_t& R, const uint8_t& data);
+void LDA(const uint16_t& M);
+void LDAX(const uint8_t& R);
+void LHLD(const uint16_t& M);
+void STA(const uint16_t& M);
+void STAX(const uint8_t& R);
 void SPHL();
 void PCHL();
 // STACK OPERATIONS
 void PUSH(uint8_t R);
 void POP(uint8_t R);
 // ARITHMETIC OPERATIONS
-void ADD_R(uint8_t R);
-void ADD_M(uint16_t M);
-void ADI(uint8_t data);
-void ACI(uint8_t data);
-void ADC(uint8_t R, uint8_t data);
-void AMC(uint16_t M);
+void ADD_R(const uint8_t& R);
+void ADD_M(const uint16_t& M);
+void ADI(const uint8_t& data);
+void ACI(const uint8_t& data);
+void ADC(const uint8_t& R, const uint8_t& data);
+void AMC(const uint16_t& M);
 
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
