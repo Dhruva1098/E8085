@@ -8,7 +8,7 @@
 
 int main() {
     MEMORY[0x0000] = 42;
-    MOV((uint16_t)0x0001, 11);
+    MOV_MD((uint16_t)0x0001, 11);
     LHLD(0x0001);
     LDAX(B);
     STA(0x0001);

@@ -2,8 +2,8 @@
 
 #include "headers/instruction_set.hpp"
 
-#include <iostream>
 #include <limits.h>
+#include <iostream>
 
 #include "headers/flag.h"
 
