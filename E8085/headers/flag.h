@@ -13,10 +13,10 @@ class _FLAG_ {
     bool get_sign() {
         return unsigned(FLAG << 7);
     }
-    void set_flag() {
+    void set_sign() {
         FLAG |= 0b10000000;
     }
-    void reset_flag() {
+    void reset_sign() {
         FLAG &= 0b01111111;
     }
 

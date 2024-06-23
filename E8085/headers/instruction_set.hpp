@@ -31,8 +31,8 @@ class _STACK_{
 };
 
 enum{
-    _MOV = 0,
-    _MVI,
+    _MOV_RM = 0,
+    _MVI_MD,
     _LDA,
     _LDAX,
     _LHLD,
@@ -40,11 +40,17 @@ enum{
     _STAX,
     _SPHL,
     _PUSH,
-    _POP
+    _POP,
+    _ADD_R,
+    _ADD_M,
+    _ADI,
+    _ACI,
+    _ADC,
+    _AMC
 };
 
-void MOV(uint8_t R, uint16_t M);
-void MOV(uint16_t M, uint8_t data);
+void MOV_RM(uint8_t R, uint16_t M);
+void MOV_MD(uint16_t M, uint8_t data);
 void MVI(uint8_t R, uint8_t data);
 void LDA(uint16_t M);
 void LDAX(uint8_t R);
@@ -56,4 +62,12 @@ void PCHL();
 // STACK OPERATIONS
 void PUSH(uint8_t R);
 void POP(uint8_t R);
+// ARITHMETIC OPERATIONS
+void ADD_R(uint8_t R);
+void ADD_M(uint16_t M);
+void ADI(uint8_t data);
+void ACI(uint8_t data);
+void ADC(uint8_t R, uint8_t data);
+void AMC(uint16_t M);
+
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
