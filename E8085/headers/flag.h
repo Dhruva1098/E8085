@@ -3,8 +3,6 @@
 #ifndef E8085_HEADERS_FLAG_H_
 #define E8085_HEADERS_FLAG_H_
 
-#include <iostream>
-
 class _FLAG_ {
     uint8_t FLAG;
 
@@ -14,50 +12,50 @@ class _FLAG_ {
         return unsigned(FLAG << 7);
     }
     void set_sign() {
-        FLAG |= 0b10000000;
+        FLAG |= 0x80;
     }
     void reset_sign() {
-        FLAG &= 0b01111111;
+        FLAG &= 0x7F;
     }
 
     bool get_zero() {
         return unsigned(FLAG << 6);
     }
     void set_zero() {
-        FLAG |= 0b01000000;
+        FLAG |= 0x40;
     }
     void reset_zero() {
-        FLAG &= 0b10111111;
+        FLAG &= 0xBF;
     }
 
     bool get_aux_carry() {
         return unsigned(FLAG << 4);
     }
     void set_aux_carry() {
-        FLAG |= 0b00001000;
+        FLAG |= 0x08;
     }
     void reset_aux_carry() {
-        FLAG &= 0b11110111;
+        FLAG &= 0xF7;
     }
 
     bool get_parity() {
         return unsigned(FLAG << 2);
     }
     void set_parity() {
-        FLAG |= 0b00000010;
+        FLAG |= 0x02;
     }
     void reset_parity() {
-        FLAG &= 0b11111101;
+        FLAG &= 0xFD;
     }
 
     bool get_carry() {
         return unsigned(FLAG << 1);
     }
     void set_carry() {
-        FLAG |= 0b00000001;
+        FLAG |= 0x01;
     }
     void reset_carry() {
-        FLAG &= 0b11111110;
+        FLAG &= 0xFE;
     }
 };
 
@@ -71,9 +69,8 @@ enum {
 };
 
 enum {
-    A = 0,
-    INSTRUCTION,
-    ACC
+    ACC = 0,
+    INSTRUCTION
 };
 
 #endif  // E8085_HEADERS_FLAG_H_
