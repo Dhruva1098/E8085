@@ -46,7 +46,13 @@ enum{
     _ADI,
     _ACI,
     _ADC,
-    _AMC
+    _AMC,
+    _SUB_R,
+    _SUB_M,
+    _SUI,
+    _SBI,
+    _SBB_R,
+    _SBB_M
 };
 
 void MOV_RM(const uint8_t& R, const uint16_t& M);
