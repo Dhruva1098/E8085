@@ -30,7 +30,10 @@ bool parity_helper(uint8_t num) {
     } return parity;
 }
 bool carry_addition_helper(const uint8_t& num1, const uint8_t& num2) {
-    return ((num2 < 0 && num1 > UINT8_MAX - num2) || (num2 > 0 && num1 < UINT8_MAX - num2));
+    return ((num2 < 0 && num1 < 0 - num2) || (num2 > 0 && num1 > UINT8_MAX - num2));
+}
+bool carry_subtraction_helper(const uint8_t& num1, const uint8_t num2) {
+    return ((num2 < 0 && num1 > UINT8_MAX + num2) || (num2 > 0 && num1 < 0 + num2));
 }
 // DATA TRANSFER INSTRUCTIONS
 void MOV_RM(const uint8_t& R, const uint16_t& M) {  // working
@@ -79,59 +82,176 @@ void POP(const uint8_t& R) {
 }
 // ARITHMETIC OPERATIONS
 void ADD_R(const uint8_t& R) {
-    if (aux_carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry(); }
-    if (carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_carry(); }
+    if (aux_carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
     SPR[ACC] = SPR[ACC] + GPR[R];  // store in acc itself
-    if (!SPR[ACC]) { FLAG.set_zero(); }
-    if (SPR[ACC] & 0b10000000) { FLAG.set_sign(); }
-    if (parity_helper(SPR[ACC])) { FLAG.set_sign(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
 }
 void ADD_M(const uint16_t& M) {
-    if (aux_carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry(); }
-    if (carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry(); }
+    if (aux_carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
     SPR[ACC] = SPR[ACC] + MEMORY[M];  // store in acc itself
-    if (!SPR[ACC]) { FLAG.set_zero(); }
-    if (SPR[ACC] & 0b10000000) { FLAG.set_sign(); }
-    if (parity_helper(SPR[ACC])) { FLAG.set_sign(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
 }
 void ADI(const uint8_t& data) {
-    if (aux_carry_addition_helper(SPR[ACC], data)) { FLAG.set_aux_carry(); }
-    if (carry_addition_helper(SPR[ACC], data)) { FLAG.set_carry(); }
+    if (aux_carry_addition_helper(SPR[ACC], data)) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_addition_helper(SPR[ACC], data)) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
     SPR[ACC] = SPR[ACC] + data;  // store in acc itself
-    if (!SPR[ACC]) { FLAG.set_zero(); }
-    if (SPR[ACC] & 0b10000000) { FLAG.set_sign(); }
-    if (parity_helper(SPR[ACC])) { FLAG.set_sign(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
 }
 void ACI(const uint8_t& data) {
     uint8_t tempCarry = 0;
     if (FLAG.get_carry()) { tempCarry = 1; }
-    if (aux_carry_addition_helper(SPR[ACC], data)) { FLAG.set_aux_carry(); }
-    if (carry_addition_helper(SPR[ACC], data)) { FLAG.set_carry(); }
+    if (aux_carry_addition_helper(SPR[ACC], data)) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_addition_helper(SPR[ACC], data)) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
     if (tempCarry) { SPR[ACC] = SPR[ACC] + data + 0x01;  // add with carry
     } else { SPR[ACC] = SPR[ACC] + data; }
-    if (!SPR[ACC]) { FLAG.set_zero(); }
-    if (SPR[ACC] & 0b10000000) { FLAG.set_sign(); }
-    if (parity_helper(SPR[ACC])) { FLAG.set_sign(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
 }
 void ADC(const uint8_t& R) {
     uint8_t tempCarry = 0;
     if (FLAG.get_carry()) { tempCarry = 1; }
-    if (aux_carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry(); }
-    if (carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_carry(); }
+    if (aux_carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
     if (tempCarry) { SPR[ACC] = SPR[ACC] + GPR[R] + 0x01;  // add with carry
     } else { SPR[ACC] = SPR[ACC] + GPR[R]; }
-    if (!SPR[ACC]) { FLAG.set_zero(); }
-    if (SPR[ACC] & 0b10000000) { FLAG.set_sign(); }
-    if (parity_helper(SPR[ACC])) { FLAG.set_sign(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
 }
 void AMC(const uint16_t& M) {
     uint8_t tempCarry = 0;
     if (FLAG.get_carry()) { tempCarry = 1; }
-    if (aux_carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry(); }
-    if (carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry(); }
+    if (aux_carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_addition_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
     if (tempCarry) { SPR[ACC] = SPR[ACC] + MEMORY[M] + 0x01;  // add with carry
     } else { SPR[ACC] = SPR[ACC] + MEMORY[M]; }
-    if (!SPR[ACC]) { FLAG.set_zero(); }
-    if (SPR[ACC] & 0b10000000) { FLAG.set_sign(); }
-    if (parity_helper(SPR[ACC])) { FLAG.set_sign(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void SUB_R(const uint8_t& R) {
+    if (aux_carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    SPR[ACC] = SPR[ACC] - GPR[R];  // store in acc itself
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void SUB_M(const uint16_t& M) {
+    if (aux_carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    SPR[ACC] = SPR[ACC] - MEMORY[M];  // store in acc itself
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void SUI(const uint8_t& data) {
+    if (aux_carry_subtraction_helper(SPR[ACC], data)) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], data)) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    SPR[ACC] = SPR[ACC] - data;  // store in acc itself
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void SBI(const uint8_t& data) {
+    uint8_t tempCarry = 0;
+    if (FLAG.get_carry()) { tempCarry = 1; }
+    if (aux_carry_subtraction_helper(SPR[ACC], data)) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], data)) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    if (tempCarry) { SPR[ACC] = (SPR[ACC] + 0x10) - data;  // subtract with borrow
+    } else { SPR[ACC] = SPR[ACC] + data; }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void SBB_R(const uint8_t& R) {
+    uint8_t tempCarry = 0;
+    if (FLAG.get_carry()) { tempCarry = 1; }
+    if (aux_carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    if (tempCarry) { SPR[ACC] = (SPR[ACC] + 0x10) - GPR[R];  // subtract with borrow
+    } else { SPR[ACC] = SPR[ACC] + GPR[R]; }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void SBB_M(const uint16_t M) {
+    uint8_t tempCarry = 0;
+    if (FLAG.get_carry()) { tempCarry = 1; }
+    if (aux_carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    if (tempCarry) { SPR[ACC] = (SPR[ACC] + 0x01) - MEMORY[M];  // subtract with borrow
+    } else { SPR[ACC] = SPR[ACC] + MEMORY[M]; }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
 }
