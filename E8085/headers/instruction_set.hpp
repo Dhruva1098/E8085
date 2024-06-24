@@ -67,7 +67,7 @@ void ADD_R(const uint8_t& R);
 void ADD_M(const uint16_t& M);
 void ADI(const uint8_t& data);
 void ACI(const uint8_t& data);
-void ADC(const uint8_t& R, const uint8_t& data);
+void ADC(const uint8_t& R);
 void AMC(const uint16_t& M);
 
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
