@@ -80,5 +80,16 @@ void SUB_M(const uint16_t& M);
 void SUI(const uint8_t& data);
 void SBI(const uint8_t& data);
 void SBB_R(const uint8_t& R);
-void SBB_M(const uint16_t M);
+void SBB_M(const uint16_t& M);
+void INX(const uint8_t& R);
+void DCX(const uint8_t& R);
+void DCR(const uint16_t& M);
+//  LOGICAL INSTRUCTIONS
+void CMP_R(const uint8_t& R);
+void CMP_M(const uint16_t& M);
+void CPI(const uint8_t& data);
+void ANA_R(const uint8_t& R);
+void ANA_M(const uint16_t& M);
+void ANI(const uint8_t& data);
+
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_

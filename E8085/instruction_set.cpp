@@ -239,7 +239,7 @@ void SBB_R(const uint8_t& R) {
     if (parity_helper(SPR[ACC])) { FLAG.set_parity();
     } else { FLAG.reset_parity(); }
 }
-void SBB_M(const uint16_t M) {
+void SBB_M(const uint16_t& M) {
     uint8_t tempCarry = 0;
     if (FLAG.get_carry()) { tempCarry = 1; }
     if (aux_carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry();
