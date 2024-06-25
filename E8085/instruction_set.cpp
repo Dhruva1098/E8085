@@ -255,3 +255,73 @@ void SBB_M(const uint16_t& M) {
     if (parity_helper(SPR[ACC])) { FLAG.set_parity();
     } else { FLAG.reset_parity(); }
 }
+//  LOGICAL INSTRUCTIONS
+void CMP_R(const uint8_t& R) {
+    if (aux_carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void CMP_M(const uint16_t& M) {
+    if (aux_carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], MEMORY[M])) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void CPI(const uint8_t& data) {
+    if (aux_carry_subtraction_helper(SPR[ACC], data)) { FLAG.set_aux_carry();
+    } else { FLAG.reset_aux_carry(); }
+    if (carry_subtraction_helper(SPR[ACC], data)) { FLAG.set_carry();
+    } else { FLAG.reset_carry(); }
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void ANA_R(const uint8_t& R) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] & GPR[R];
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void ANA_M(const uint16_t& M) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] & MEMORY[M];
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void ANI(const uint8_t& data) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] & data;
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
