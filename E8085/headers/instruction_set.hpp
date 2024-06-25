@@ -91,5 +91,11 @@ void CPI(const uint8_t& data);
 void ANA_R(const uint8_t& R);
 void ANA_M(const uint16_t& M);
 void ANI(const uint8_t& data);
+void ORA_R(const uint8_t& R);
+void ORA_M(const uint16_t& M);
+void ORI(const uint8_t& data);
+void XRA_R(const uint8_t& R);
+void XRA_M(const uint16_t& M);
+void XRI(const uint8_t& data);
 
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_

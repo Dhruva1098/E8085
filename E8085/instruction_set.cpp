@@ -325,3 +325,69 @@ void ANI(const uint8_t& data) {
     if (parity_helper(SPR[ACC])) { FLAG.set_parity();
     } else { FLAG.reset_parity(); }
 }
+void ORA_R(const uint8_t& R) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] | GPR[R];
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void ORA_M(const uint16_t& M) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] | MEMORY[M];
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void ORI(const uint8_t& data) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] | data;
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void XRA_R(const uint8_t& R) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] ^ GPR[R];
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void XRA_M(const uint16_t& M) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] ^ MEMORY[M];
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
+void XRI(const uint8_t& data) {
+    FLAG.reset_carry();
+    FLAG.reset_aux_carry();
+    SPR[ACC] = SPR[ACC] ^ data;
+    if (!SPR[ACC]) { FLAG.set_zero();
+    } else { FLAG.reset_zero(); }
+    if (SPR[ACC] & 0x80) { FLAG.set_sign();
+    } else { FLAG.reset_sign(); }
+    if (parity_helper(SPR[ACC])) { FLAG.set_parity();
+    } else { FLAG.reset_parity(); }
+}
