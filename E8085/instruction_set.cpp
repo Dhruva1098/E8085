@@ -391,3 +391,10 @@ void XRI(const uint8_t& data) {
     if (parity_helper(SPR[ACC])) { FLAG.set_parity();
     } else { FLAG.reset_parity(); }
 }
+void CMC() {
+    if (FLAG.get_carry()) { FLAG.reset_carry();
+    } else { FLAG.set_carry(); }
+}
+void STC() {
+    FLAG.set_carry();
+}
