@@ -9,10 +9,8 @@
 int main() {
     std::string instruction;
     std::vector<std::string> instructions;
-    
     while (getline(std::cin, instruction) && !instruction.empty()) {
         instructions.push_back(instruction);
     }
-    
     std::cout << "user has entered " << instructions.size() << " instructions";
 }
