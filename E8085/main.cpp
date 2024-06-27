@@ -7,14 +7,12 @@
 #include "headers/instruction_set.hpp"
 
 int main() {
-    MEMORY[0x0000] = 42;
-    MOV_MD((uint16_t)0x0001, 11);
-    LHLD(0x0001);
-    LDAX(B);
-    STA(0x0001);
-    STAX(B);
-    SPHL();
-    std::cout << (unsigned)SPR[ACC] << "\n"<< (unsigned)GPR[B]
-    << "\n" << (unsigned)MEMORY[0x0001] << "\n" <<
-    (unsigned)stack_pointer << "\n";
+    std::string instruction;
+    std::vector<std::string> instructions;
+    
+    while (getline(std::cin, instruction) && !instruction.empty()) {
+        instructions.push_back(instruction);
+    }
+    
+    std::cout << "user has entered " << instructions.size() << " instructions";
 }

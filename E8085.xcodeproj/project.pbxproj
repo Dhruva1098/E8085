@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52229AB12C2D815E0027A730 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52229AB02C2D81540027A730 /* parser.cpp */; };
 		52CE83922C2585F40027D0A4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CE83912C2585F40027D0A4 /* main.cpp */; };
 		52CE839D2C2586A00027D0A4 /* instruction_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CE839B2C2586A00027D0A4 /* instruction_set.cpp */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52229AB02C2D81540027A730 /* parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; };
 		52CE838E2C2585F40027D0A4 /* E8085 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = E8085; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CE83912C2585F40027D0A4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52CE839B2C2586A00027D0A4 /* instruction_set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = instruction_set.cpp; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				525BFDC12C26A96B001BED7F /* headers */,
 				52CE83912C2585F40027D0A4 /* main.cpp */,
 				52CE839B2C2586A00027D0A4 /* instruction_set.cpp */,
+				52229AB02C2D81540027A730 /* parser.cpp */,
 			);
 			path = E8085;
 			sourceTree = "<group>";
@@ -104,7 +107,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					52CE838D2C2585F40027D0A4 = {
 						CreatedOnToolsVersion = 15.4;
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CE83922C2585F40027D0A4 /* main.cpp in Sources */,
+				52229AB12C2D815E0027A730 /* parser.cpp in Sources */,
 				52CE839D2C2586A00027D0A4 /* instruction_set.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +180,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -237,6 +242,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -261,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2U7P624U23;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -271,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2U7P624U23;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
