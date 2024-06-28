@@ -7,8 +7,10 @@
 #include "headers/instruction_set.hpp"
 
 int main() {
-    auto it1 = instruction_map.find(3);
-    if(it1 != instruction_map.end()) {
-        std::invoke(it1->second, 2, 4);
-    }
+    std::unordered_map<uint8_t, instruction_void> instruction_map;
+    std::cout << "hello world";
+    instruction_map = {
+        {1, MVI}
+    };
+    instruction_map[1];
 }

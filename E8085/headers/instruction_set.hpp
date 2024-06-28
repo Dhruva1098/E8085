@@ -80,8 +80,8 @@ void STC();  // void
 // Type aliases for functional pointers
 using instruction_RM = std::function<void(uint8_t&, uint16_t&)>;
 using instruction_MD = std::function<void(uint16_t&, uint8_t&)>;
-using instruction_RD = std::function<void(const uint8_t&, const uint8_t&)>;
-using instruction_M = std::function<void(const uint16_t&)>;
+using instruction_RD = std::function<void(uint8_t&, uint8_t&)>;
+using instruction_M = std::function<void(uint16_t&)>;
 using instruction_R = std::function<void(uint8_t&)>;
 using instruction_D = std::function<void(uint8_t&)>;
 using instruction_void = std::function<void()>;
