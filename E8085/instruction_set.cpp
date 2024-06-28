@@ -12,6 +12,7 @@ uint8_t GPR[6];  // general purpose registers
 uint8_t SPR[3];  // special purpose registers
 uint16_t program_counter;
 uint16_t stack_pointer;
+
 _FLAG_ FLAG;
 _STACK_ STACK;
 
@@ -398,7 +399,7 @@ void CMC() {
 void STC() {
     FLAG.set_carry();
 }
-std::unordered_map<uint8_t, instruction_void> instruction_map;
+instruction_void instruction_array[1];
 // Function map initialization
 
 

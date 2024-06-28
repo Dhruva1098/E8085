@@ -86,5 +86,5 @@ using instruction_R = std::function<void(uint8_t&)>;
 using instruction_D = std::function<void(uint8_t&)>;
 using instruction_void = std::function<void()>;
 
-extern std::unordered_map<uint8_t, instruction_void> instruction_map;
+extern instruction_void instruction_array[1];
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
