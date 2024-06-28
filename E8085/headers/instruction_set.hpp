@@ -5,6 +5,8 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <functional>
 
 extern uint8_t MEMORY[0xFFFF];  // __init__ memory 256x8 bytes
 extern uint8_t GPR[6];  // general purpose registers
@@ -30,48 +32,59 @@ class _STACK_{
     }
 };
 
-void MOV_RM(const uint8_t& R, const uint16_t& M);
-void MOV_MD(const uint16_t& M, const uint8_t& data);
-void MVI(const uint8_t& R, const uint8_t& data);
-void LDA(const uint16_t& M);
-void LDAX(const uint8_t& R);
-void LHLD(const uint16_t& M);
-void STA(const uint16_t& M);
-void STAX(const uint8_t& R);
-void SPHL();
-void PCHL();
+void MOV_RM(const uint8_t& R, const uint16_t& M);  // RM
+void MOV_MD(const uint16_t& M, const uint8_t& data);  // MD
+void MVI(const uint8_t& R, const uint8_t& data);  // RD
+void LDA(const uint16_t& M);  // M
+void LDAX(const uint8_t& R);  // R
+void LHLD(const uint16_t& M);  // M
+void STA(const uint16_t& M);  // M
+void STAX(const uint8_t& R);  // R
+void SPHL();  // void
+void PCHL();  // void
 // STACK OPERATIONS
-void PUSH(uint8_t R);
-void POP(uint8_t R);
+void PUSH(uint8_t R);  // R
+void POP(uint8_t R);  // R
 // ARITHMETIC OPERATIONS
-void ADD_R(const uint8_t& R);
-void ADD_M(const uint16_t& M);
-void ADI(const uint8_t& data);
-void ACI(const uint8_t& data);
-void ADC(const uint8_t& R);
-void AMC(const uint16_t& M);
-void SUB_R(const uint8_t& R);
-void SUB_M(const uint16_t& M);
-void SUI(const uint8_t& data);
-void SBI(const uint8_t& data);
-void SBB_R(const uint8_t& R);
-void SBB_M(const uint16_t& M);
-void INX(const uint8_t& R);
-void DCX(const uint8_t& R);
-void DCR(const uint16_t& M);
+void ADD_R(const uint8_t& R);  // R
+void ADD_M(const uint16_t& M);  // M
+void ADI(const uint8_t& data);  // D
+void ACI(const uint8_t& data);  // D
+void ADC(const uint8_t& R);  // R
+void AMC(const uint16_t& M);  // M
+void SUB_R(const uint8_t& R);  // R
+void SUB_M(const uint16_t& M);  // M
+void SUI(const uint8_t& data);  // D
+void SBI(const uint8_t& data);  // D
+void SBB_R(const uint8_t& R);  // R
+void SBB_M(const uint16_t& M);  // M
+void INX(const uint8_t& R);  // R
+void DCX(const uint8_t& R);  // R
+void DCR(const uint16_t& M);  // M
 //  LOGICAL INSTRUCTIONS
-void CMP_R(const uint8_t& R);
-void CMP_M(const uint16_t& M);
-void CPI(const uint8_t& data);
-void ANA_R(const uint8_t& R);
-void ANA_M(const uint16_t& M);
-void ANI(const uint8_t& data);
-void ORA_R(const uint8_t& R);
-void ORA_M(const uint16_t& M);
-void ORI(const uint8_t& data);
-void XRA_R(const uint8_t& R);
-void XRA_M(const uint16_t& M);
-void XRI(const uint8_t& data);
-void CMC();
-void STC();
+void CMP_R(const uint8_t& R);  // R
+void CMP_M(const uint16_t& M);  // M
+void CPI(const uint8_t& data);  // D
+void ANA_R(const uint8_t& R);  // R
+void ANA_M(const uint16_t& M);  // M
+void ANI(const uint8_t& data);  // D
+void ORA_R(const uint8_t& R);  // R
+void ORA_M(const uint16_t& M);  // M
+void ORI(const uint8_t& data);  // D
+void XRA_R(const uint8_t& R);  // R
+void XRA_M(const uint16_t& M);  // M
+void XRI(const uint8_t& data);  // D
+void CMC();  // void
+void STC();  // void
+
+// Type aliases for functional pointers
+using Instruction_RM = std::function<void(uint8_t, uint16_t)>;
+using Instruction_MD = std::function<void(uint16_t, uint8_t)>;
+using Instruction_RD = std::function<void(uint8_t, uint8_t)>;
+using Instruction_M = std::function<void(uint16_t)>;
+using Instruction_R = std::function<void(uint8_t)>;
+using Instruction_D = std::function<void(uint8_t)>;
+using Instruction_void = std::function<void()>;
+
+extern std::unordered_map<uint8_t, Instruction_void> instruction_map;
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
