@@ -398,6 +398,16 @@ void CMC() {
 void STC() {
     FLAG.set_carry();
 }
+std::unordered_map<uint8_t, instruction_void> instruction_map;
+// Function map initialization
+namespace {
+struct init_instruction_map {
+    init_instruction_map() {
+        instruction_map.emplace(3, instruction_RD(MVI));
+    }
+};
+init_instruction_map initMap;
+}
 
-// UNORDERED MAP for functions
-// std::unordered_map<uint8_t, instruction_void> instruction_map
+
+ 

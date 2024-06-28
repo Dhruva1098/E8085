@@ -7,10 +7,8 @@
 #include "headers/instruction_set.hpp"
 
 int main() {
-    std::string instruction;
-    std::vector<std::string> instructions;
-    while (getline(std::cin, instruction) && !instruction.empty()) {
-        instructions.push_back(instruction);
+    auto it1 = instruction_map.find(3);
+    if(it1 != instruction_map.end()) {
+        std::invoke(it1->second, 2, 4);
     }
-    std::cout << "user has entered " << instructions.size() << " instructions";
 }
