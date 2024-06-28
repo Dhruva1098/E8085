@@ -398,3 +398,6 @@ void CMC() {
 void STC() {
     FLAG.set_carry();
 }
+
+// UNORDERED MAP for functions
+// std::unordered_map<uint8_t, instruction_void> instruction_map
