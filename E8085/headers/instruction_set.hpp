@@ -30,31 +30,6 @@ class _STACK_{
     }
 };
 
-enum{
-    _MOV_RM = 0,
-    _MVI_MD,
-    _LDA,
-    _LDAX,
-    _LHLD,
-    _STA,
-    _STAX,
-    _SPHL,
-    _PUSH,
-    _POP,
-    _ADD_R,
-    _ADD_M,
-    _ADI,
-    _ACI,
-    _ADC,
-    _AMC,
-    _SUB_R,
-    _SUB_M,
-    _SUI,
-    _SBI,
-    _SBB_R,
-    _SBB_M
-};
-
 void MOV_RM(const uint8_t& R, const uint16_t& M);
 void MOV_MD(const uint16_t& M, const uint8_t& data);
 void MVI(const uint8_t& R, const uint8_t& data);
