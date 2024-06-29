@@ -86,5 +86,6 @@ using instruction_R = std::function<void(uint8_t&)>;
 using instruction_D = std::function<void(uint8_t&)>;
 using instruction_void = std::function<void()>;
 
-extern instruction_void instruction_array[1];
+extern std::array<std::function<void()>, 2> instruction_set;
+
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_

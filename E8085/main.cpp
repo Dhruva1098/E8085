@@ -7,5 +7,8 @@
 #include "headers/instruction_set.hpp"
 
 int main() {
-    instruction_array[0];
+    for(auto& func : instruction_set) {
+        func();
+        std::cout << static_cast<unsigned>(MEMORY[0x0000]) << "\n" << GPR[B];
+    }
 }

@@ -399,7 +399,11 @@ void CMC() {
 void STC() {
     FLAG.set_carry();
 }
-instruction_void instruction_array[1];
+std::array<std::function<void()>,  2> instruction_set = {
+    std::bind(MVI, B, 8),
+    std::bind(MOV_MD, 0x0000, 10)
+};
+
 // Function map initialization
 
 
