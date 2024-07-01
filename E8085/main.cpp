@@ -5,10 +5,6 @@
 
 #include "headers/flag.h"
 #include "headers/instruction_set.hpp"
-
+#include "headers/parser.h"
 int main() {
-    for(auto& func : instruction_set) {
-        func();
-        std::cout << static_cast<unsigned>(MEMORY[0x0000]) << "\n" << GPR[B];
-    }
 }

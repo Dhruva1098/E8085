@@ -5,8 +5,9 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_map>
+#include <map>
 #include <functional>
+#include <string>
 
 extern uint8_t MEMORY[0xFFFF];  // __init__ memory 256x8 bytes
 extern uint8_t GPR[6];  // general purpose registers
@@ -85,7 +86,5 @@ using instruction_M = std::function<void(uint16_t&)>;
 using instruction_R = std::function<void(uint8_t&)>;
 using instruction_D = std::function<void(uint8_t&)>;
 using instruction_void = std::function<void()>;
-
-extern std::array<std::function<void()>, 2> instruction_set;
 
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
