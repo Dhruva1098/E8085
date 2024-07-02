@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52229AB12C2D815E0027A730 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52229AB02C2D81540027A730 /* parser.cpp */; };
+		52A0AF1C2C3447EC004EB132 /* function_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A0AF1B2C3447DC004EB132 /* function_map.cpp */; };
 		52CE83922C2585F40027D0A4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CE83912C2585F40027D0A4 /* main.cpp */; };
 		52CE839D2C2586A00027D0A4 /* instruction_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CE839B2C2586A00027D0A4 /* instruction_set.cpp */; };
 /* End PBXBuildFile section */
@@ -25,8 +26,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		52229AB02C2D81540027A730 /* parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; };
+		52229AB02C2D81540027A730 /* parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		52229AB22C2D85F90027A730 /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		52A0AF1A2C3447CC004EB132 /* function_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = function_map.h; sourceTree = "<group>"; };
+		52A0AF1B2C3447DC004EB132 /* function_map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = function_map.cpp; sourceTree = "<group>"; };
 		52CE838E2C2585F40027D0A4 /* E8085 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = E8085; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CE83912C2585F40027D0A4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52CE839B2C2586A00027D0A4 /* instruction_set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = instruction_set.cpp; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		525BFDC12C26A96B001BED7F /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				52A0AF1A2C3447CC004EB132 /* function_map.h */,
 				52229AB22C2D85F90027A730 /* parser.h */,
 				52CE839E2C2586DF0027D0A4 /* flag.h */,
 				52CE839C2C2586A00027D0A4 /* instruction_set.hpp */,
@@ -78,6 +82,7 @@
 				52CE83912C2585F40027D0A4 /* main.cpp */,
 				52CE839B2C2586A00027D0A4 /* instruction_set.cpp */,
 				52229AB02C2D81540027A730 /* parser.cpp */,
+				52A0AF1B2C3447DC004EB132 /* function_map.cpp */,
 			);
 			path = E8085;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A0AF1C2C3447EC004EB132 /* function_map.cpp in Sources */,
 				52CE83922C2585F40027D0A4 /* main.cpp in Sources */,
 				52229AB12C2D815E0027A730 /* parser.cpp in Sources */,
 				52CE839D2C2586A00027D0A4 /* instruction_set.cpp in Sources */,
