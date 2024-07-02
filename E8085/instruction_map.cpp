@@ -7,7 +7,7 @@
 
 const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_instruction_map() {
     static std::map<std::string, std::function<void(const std::vector<std::string>&)>> instruction_map;
-    // Functions with 0 arguments
+    // one word instructions
     // SPHL
     instruction_map["SPHL"] = [](const std::vector<std::string>& args) {
         if (args.empty()) {
