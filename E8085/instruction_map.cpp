@@ -7,7 +7,7 @@
 
 const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_instruction_map() {
     static std::map<std::string, std::function<void(const std::vector<std::string>&)>> instruction_map;
-    // one word instructions
+// one word instructions
     // SPHL
     instruction_map["SPHL"] = [](const std::vector<std::string>& args) {
         if (args.empty()) {
@@ -40,6 +40,15 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             std::cerr << "ERROR: function expects no arguments" << std::endl;
         }
     };
-
+// two word instructions
+    instruction_map["LDA"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            uint16_t mem_location = (uint16_t)std::stoi(args[0]);
+            LDA(mem_location);
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument,"
+            << " no or more arguments were given" << std::endl;
+        }
+    };
     return instruction_map;
 }
