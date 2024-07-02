@@ -7,7 +7,7 @@
 
 void parse_and_execute(
                        const std::string& input,
-                       std::map<std::string,
+                       const std::map<std::string,
                        std::function<void(const std::vector<std::string>&)>>& instruction_map) {
     std::istringstream iss(input);
     std::string instruction_name;
