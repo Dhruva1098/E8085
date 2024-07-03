@@ -1,10 +1,12 @@
 // Copyright 2024 Dhruva Sharma
 
 #include "headers/instruction_map.h"
+
+#include <iostream>
+
 #include "headers/instruction_set.hpp"
 #include "headers/enums.h"
 
-#include <iostream>
 
 const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_instruction_map() {
     static std::map<std::string, std::function<void(const std::vector<std::string>&)>> instruction_map;
