@@ -2,6 +2,7 @@
 
 #include "headers/instruction_map.h"
 #include "headers/instruction_set.hpp"
+#include "headers/enums.h"
 
 #include <iostream>
 
@@ -43,8 +44,12 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
 // two word instructions
     instruction_map["LDA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
-            uint16_t mem_location = (uint16_t)std::stoi(args[0]);
-            LDA(mem_location);
+            try {
+                uint16_t mem_location = (uint16_t)string_to_enum(args[0]);
+                LDA(mem_location);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR " << ex.what() << std::endl;
+            }
         } else {
             std::cerr << "ERROR: function expects exactly one argument,"
             << " no or more arguments were given" << std::endl;
