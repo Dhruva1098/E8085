@@ -59,18 +59,5 @@ class _FLAG_ {
     }
 };
 
-enum {
-    B = 0,
-    C,
-    D,
-    E,
-    H,
-    L
-};
-
-enum {
-    ACC = 0,
-    INSTRUCTION
-};
 
 #endif  // E8085_HEADERS_FLAG_H_

@@ -11,6 +11,7 @@
 		52A0AF1C2C3447EC004EB132 /* instruction_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52A0AF1B2C3447DC004EB132 /* instruction_map.cpp */; };
 		52CE83922C2585F40027D0A4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CE83912C2585F40027D0A4 /* main.cpp */; };
 		52CE839D2C2586A00027D0A4 /* instruction_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52CE839B2C2586A00027D0A4 /* instruction_set.cpp */; };
+		52F526892C35B60500B87F28 /* enums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F526882C35B5FD00B87F28 /* enums.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		52CE839B2C2586A00027D0A4 /* instruction_set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = instruction_set.cpp; sourceTree = "<group>"; };
 		52CE839C2C2586A00027D0A4 /* instruction_set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = instruction_set.hpp; sourceTree = "<group>"; };
 		52CE839E2C2586DF0027D0A4 /* flag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = flag.h; sourceTree = "<group>"; };
+		52F526872C35B4E400B87F28 /* enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = enums.h; sourceTree = "<group>"; };
+		52F526882C35B5FD00B87F28 /* enums.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enums.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 		525BFDC12C26A96B001BED7F /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				52F526872C35B4E400B87F28 /* enums.h */,
 				52A0AF1A2C3447CC004EB132 /* instruction_map.h */,
 				52229AB22C2D85F90027A730 /* parser.h */,
 				52CE839E2C2586DF0027D0A4 /* flag.h */,
@@ -83,6 +87,7 @@
 				52CE839B2C2586A00027D0A4 /* instruction_set.cpp */,
 				52229AB02C2D81540027A730 /* parser.cpp */,
 				52A0AF1B2C3447DC004EB132 /* instruction_map.cpp */,
+				52F526882C35B5FD00B87F28 /* enums.cpp */,
 			);
 			path = E8085;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			files = (
 				52A0AF1C2C3447EC004EB132 /* instruction_map.cpp in Sources */,
 				52CE83922C2585F40027D0A4 /* main.cpp in Sources */,
+				52F526892C35B60500B87F28 /* enums.cpp in Sources */,
 				52229AB12C2D815E0027A730 /* parser.cpp in Sources */,
 				52CE839D2C2586A00027D0A4 /* instruction_set.cpp in Sources */,
 			);
