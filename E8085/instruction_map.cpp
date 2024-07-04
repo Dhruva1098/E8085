@@ -3,7 +3,6 @@
 #include "headers/instruction_map.h"
 
 #include <iostream>
-#include <sstream>
 
 #include "headers/instruction_set.hpp"
 #include "headers/enums.h"
@@ -49,7 +48,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     instruction_map["LDA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
             try {
-                uint16_t mem_location = (uint16_t)std::sto;
+                uint16_t mem_location = (uint16_t)string_to_enum(args[0]);
                 LDA(mem_location);
             } catch (const std::invalid_argument& ex) {
                 std::cerr << "ERROR " << ex.what() << std::endl;
@@ -74,13 +73,6 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
         }
     };
     //LHLD
-    instruction_map["LHLD"] = [](const std::vector<std::string>& args) {
-        if (args.size() == 1) {
-            try {
-                uint16_t mem_location = (uint16_t)string_to_enum
-            }
-            
-        }
-    }
+    
     return instruction_map;
 }

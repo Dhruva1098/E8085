@@ -77,14 +77,4 @@ void XRA_M(const uint16_t& M);  // M
 void XRI(const uint8_t& data);  // D
 void CMC();  // void
 void STC();  // void
-
-// Type aliases for functional pointers
-using instruction_RM = std::function<void(uint8_t&, uint16_t&)>;
-using instruction_MD = std::function<void(uint16_t&, uint8_t&)>;
-using instruction_RD = std::function<void(uint8_t&, uint8_t&)>;
-using instruction_M = std::function<void(uint16_t&)>;
-using instruction_R = std::function<void(uint8_t&)>;
-using instruction_D = std::function<void(uint8_t&)>;
-using instruction_void = std::function<void()>;
-
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_
