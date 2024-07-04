@@ -3,6 +3,7 @@
 #include "headers/instruction_map.h"
 
 #include <iostream>
+#include <sstream>
 
 #include "headers/instruction_set.hpp"
 #include "headers/enums.h"
@@ -44,10 +45,11 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
         }
     };
 // two word instructions
+    // LDA
     instruction_map["LDA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
             try {
-                uint16_t mem_location = (uint16_t)string_to_enum(args[0]);
+                uint16_t mem_location = (uint16_t)std::sto;
                 LDA(mem_location);
             } catch (const std::invalid_argument& ex) {
                 std::cerr << "ERROR " << ex.what() << std::endl;
@@ -57,5 +59,28 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << " no or more arguments were given" << std::endl;
         }
     };
+    // LDAX
+    instruction_map["LDAX"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                LDAX(reg_name);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument,"
+            << " no or more arguments were given" << std::endl;
+        }
+    };
+    //LHLD
+    instruction_map["LHLD"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint16_t mem_location = (uint16_t)string_to_enum
+            }
+            
+        }
+    }
     return instruction_map;
 }
