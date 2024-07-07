@@ -73,6 +73,5 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
         }
     };
     //LHLD
-    
-    return instruction_map;
+        return instruction_map;
 }

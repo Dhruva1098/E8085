@@ -9,6 +9,7 @@
 #include <functional>
 #include <string>
 
+
 extern uint8_t MEMORY[0xFFFF];  // __init__ memory 256x8 bytes
 extern uint8_t GPR[6];  // general purpose registers
 extern uint8_t SPR[3];  // special purpose registers
