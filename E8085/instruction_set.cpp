@@ -81,6 +81,9 @@ void STAX(const uint8_t& R) {  // working
 void SPHL() {  // working
     stack_pointer = static_cast<uint16_t>(GPR[H]);
 }
+void PCHL() {
+    program_counter = static_cast<uint16_t>(GPR[H]);
+}
 // STACK OPERATIONS
 void PUSH(const uint8_t& R) {
     if (R <= 5) { STACK.push_stack(GPR[R]);
