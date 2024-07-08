@@ -9,7 +9,31 @@
 #include <functional>
 #include <string>
 
+enum {
+    B = 0,
+    C,
+    D,
+    E,
+    H,
+    L
+};
 
+enum {
+    ACC = 0,
+    INSTRUCTION
+};
+
+inline int string_to_enum(const std::string& str) {
+    if (str == "B") return B;
+    if (str == "C") return C;
+    if (str == "D") return D;
+    if (str == "E") return E;
+    if (str == "H") return H;
+    if (str == "L") return L;
+    if (str == "ACC") return ACC;
+    if (str == "INSTRUCTION") return INSTRUCTION;
+    throw std::invalid_argument("Invalid input: " + str);
+}
 extern uint8_t MEMORY[0xFFFF];  // __init__ memory 256x8 bytes
 extern uint8_t GPR[6];  // general purpose registers
 extern uint8_t SPR[3];  // special purpose registers
