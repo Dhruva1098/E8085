@@ -5,7 +5,6 @@
 #include <iostream>
 
 #include "headers/instruction_set.hpp"
-#include "headers/enums.h"
 
 
 const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_instruction_map() {

@@ -7,7 +7,6 @@
 #include <sstream>
 
 #include "headers/flag.h"
-#include "headers/enums.h"
 
 uint8_t MEMORY[0xFFFF];  // __init__ memory 256x8 bytes
 uint8_t GPR[6];  // general purpose registers
