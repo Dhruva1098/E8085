@@ -7,6 +7,9 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <sstream>
+
+uint16_t string_to_hex(const std::string& str);
 
 const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_function_map();
 
