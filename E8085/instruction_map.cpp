@@ -179,11 +179,11 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
         }
     };
     // AMC
-    instruction_map["AMI"] = [](const std::vector<std::string>& args) {
+    instruction_map["AMC"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
             try {
-                uint8_t data = (uint8_t)string_to_hex(args[0]);
-                AMC(data);
+                uint8_t mem_location = (uint8_t)string_to_enum(args[0]);
+                AMC(mem_location);
             } catch (const std::invalid_argument& ex) {
                 std::cerr << "ERROR: " << ex.what() << std::endl;
             }
@@ -195,6 +195,32 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     // SUB
     // write conditions for SUB_R or SUB_M, write required code
     // SUI
-    instruction_map["SUI"] = []
+    instruction_map["SUI"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t data = (uint8_t)string_to_hex(args[0]);
+                SUI(data);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << " ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: Function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+    // SBI
+    instruction_map["SBI"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t data = (uint8_t)string_to_hex(args[0]);
+                SBI(data);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
     return instruction_map;
 }
