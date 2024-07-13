@@ -12,8 +12,6 @@ void parse_and_execute(
     std::istringstream iss(input);
     std::string instruction_name;
     iss >> instruction_name;
-    std::vector<std::string> arguments;
-    std::string arg;
     while (iss >> arg) {
         arguments.push_back(arg);
     }

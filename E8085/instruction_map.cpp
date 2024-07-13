@@ -18,7 +18,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     static std::map<std::string, std::function<void(const std::vector<std::string>&)>> instruction_map;
 // one word instructions
     // SPHL
-    instruction_map["SPHL"] = [](const std::vector<std::string>& args) {
+    instruction_map["SPHL"] = [](const std::vector<std::string>& args){
         if (args.empty()) {
             SPHL();
         } else {
