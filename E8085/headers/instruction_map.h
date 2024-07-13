@@ -9,8 +9,7 @@
 #include <map>
 #include <sstream>
 
-uint16_t string_to_hex(const std::string& str);
 
-const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_function_map();
+const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_instruction_map();
 
 #endif  // E8085_HEADERS_INSTRUCTION_MAP_H_

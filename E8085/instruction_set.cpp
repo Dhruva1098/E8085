@@ -25,6 +25,8 @@ uint16_t string_to_hex(const std::string& str) {
     ss >> std::hex >> hex_format;
     return hex_format;
 }
+
+
 bool aux_carry_addition_helper(const uint8_t& num1, const uint8_t& num2) {
     return (((num1 & 0X0F) + (num2 & 0x0F)) & 0x10) == 0x10;
 }

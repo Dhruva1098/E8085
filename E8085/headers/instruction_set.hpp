@@ -57,7 +57,7 @@ class _STACK_{
         }
     }
 };
-
+uint16_t string_to_hex(const std::string& str);
 void MOV_RM(const uint8_t& R, const uint16_t& M);  // RM
 void MOV_MD(const uint16_t& M, const uint8_t& data);  // MD
 void MVI(const uint8_t& R, const uint8_t& data);  // RD
