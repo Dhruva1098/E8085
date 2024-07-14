@@ -214,6 +214,19 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
+    instruction_map["DCR"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                DCR(mem_location);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
     
     return instruction_map;
 }
