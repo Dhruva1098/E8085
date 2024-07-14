@@ -17,11 +17,10 @@ int main() {
     MEMORY[0x0000] = 13;
     // Input line
 
-    for(int i = 0; i<=3; i++){
+    for (int i = 0; i <= 3; i++) {
         std::string input_line;
         std::cout << "value at acc: " << (unsigned)SPR[ACC] << "\n";
         std::getline(std::cin, input_line);
-    
         // Parse and execute
         parse_and_execute(input_line, function_map);
     }

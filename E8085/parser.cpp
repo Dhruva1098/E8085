@@ -11,16 +11,14 @@ void parse_and_execute(const std::string& input,
     std::istringstream iss(input);
     std::string function_name;
     iss >> function_name;
-
     std::vector<std::string> arguments;
     std::string arg;
     while (iss >> arg) {
         arguments.push_back(arg);
     }
-
     auto it = function_map.find(function_name);
     if (it != function_map.end()) {
-        it->second(arguments); // Call the function with arguments
+        it->second(arguments);  // Call the function with arguments
     } else {
         std::cerr << "Error: Function " << function_name << " not found." << std::endl;
     }

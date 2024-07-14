@@ -113,7 +113,6 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << " no or more arguments were given" << std::endl;
         }
     };
-    
     // ADD
     instruction_map["ADD"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
@@ -264,7 +263,6 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
         }
     };
     // LOGICAL INSTRUCTONS
-    // CMP write test condition both for cmp R or cmp M
-    
+    // CMP
     return instruction_map;
 }
