@@ -9,7 +9,7 @@
 
 const std::map<std::string, std::function<void(const std::vector<std::string>&)>>& create_instruction_map() {
     static std::map<std::string, std::function<void(const std::vector<std::string>&)>> instruction_map;
-// one word instructions
+    // one word instructions
     // SPHL
     instruction_map["SPHL"] = [](const std::vector<std::string>& args){
         if (args.empty()) {
@@ -42,7 +42,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             std::cerr << "ERROR: function expects no arguments" << std::endl;
         }
     };
-// two word instructions
+    // two word instructions
     // LDA
     instruction_map["LDA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
@@ -113,7 +113,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << " no or more arguments were given" << std::endl;
         }
     };
-
+    
     // ADD
     // check for is it ADD_R or ADD_M, write necessary functions for both
     // ADI
@@ -188,5 +188,32 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
+    instruction_map["INX"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                INX(reg_name);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+    instruction_map["DCX"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                DCX(reg_name);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function exppects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+    
     return instruction_map;
 }
