@@ -115,7 +115,23 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     };
     
     // ADD
-    // check for is it ADD_R or ADD_M, write necessary functions for both
+    instruction_map["ADD"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                if (args[0].length() == 4) {
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                    ADD_M(mem_location);
+                } else {
+                    uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: functrion expects exactly one argument,"
+            << " no or more arguments were given" << std::endl;
+        }
+    };
     // ADI
     instruction_map["ADI"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
@@ -188,6 +204,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
+    // INX
     instruction_map["INX"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
             try {
@@ -201,6 +218,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
+    // DCX
     instruction_map["DCX"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
             try {
@@ -214,6 +232,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
+    // DCR
     instruction_map["DCR"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
             try {
@@ -227,6 +246,8 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
+    // LOGICAL INSTRUCTONS
+    // CMP write test condition both for cmp R or cmp M
     
     return instruction_map;
 }
