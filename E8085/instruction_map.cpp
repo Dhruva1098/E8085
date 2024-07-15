@@ -122,6 +122,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
                     ADD_M(mem_location);
                 } else {
                     uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                    ADD_R(reg_name);
                 }
             } catch (const std::invalid_argument& ex) {
                 std::cerr << "ERROR: " << ex.what() << std::endl;
@@ -370,6 +371,21 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
                     uint16_t mem_location = (uint16_t)string_to_hex(args[1]);
                     MOV_RM(reg_name, mem_location);
                 }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR function expects exactly two arguments, "
+            << "less or more were given" << std::endl;
+        }
+    };
+    // MVI
+    instruction_map["MVI"] = [](const std::vector<std::string>& args) {
+        if(args.size() == 2) {
+            try {
+                uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                uint8_t data = (uint8_t)std::stoi(args[1]);
+                MVI(reg_name, data);
             } catch (const std::invalid_argument& ex) {
                 std::cerr << "ERROR: " << ex.what() << std::endl;
             }
