@@ -264,5 +264,24 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     };
     // LOGICAL INSTRUCTONS
     // CMP
+    instruction_map["CMP"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                if (args[0].length() == 4) {
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                    CMP_M(mem_location);
+                } else {
+                    uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                    CMP_R(reg_name);
+                }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERRIR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR function expects exactly one argument, "
+            << "no or more argumenst were given" << std::endl;
+        }
+    };
+    
     return instruction_map;
 }
