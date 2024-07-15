@@ -296,6 +296,118 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
-    
+    // ANA
+    instruction_map["ANA"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 4) {
+            try {
+                if(args[0].length() == 4) {
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                    ANA_M(mem_location);
+                } else {
+                    uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                    ANA_R(reg_name);
+                }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+    // ANI
+    instruction_map["ANI"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t data = (uint8_t)std::stoi(args[0]);
+                ANI(data);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+    // ORA
+    instruction_map["ORA"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 4) {
+            try {
+                if(args[0].length() == 4) {
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                    ORA_M(mem_location);
+                } else {
+                    uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                    ORA_R(reg_name);
+                }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+
+    // ORI
+    instruction_map["ORI"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t data = (uint8_t)std::stoi(args[0]);
+                ORI(data);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+    // XRA
+    instruction_map["XRA"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 4) {
+            try {
+                if(args[0].length() == 4) {
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                    XRA_M(mem_location);
+                } else {
+                    uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                    XRA_R(reg_name);
+                }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR: function expects exactly one argument "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+
+    // XRI
+    instruction_map["XRI"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t data = (uint8_t)std::stoi(args[0]);
+                XRI(data);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
+// TWO WORD INSTRUCTIONS
+    // MOV
+    instruction_map["MOV"] = [](const std::vector<std::string>& args) {
+        if(args.size() == 2) {
+            try {
+                if (args[0].length() == 4) {
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
+                    uint8_t data = (uint8_t)std::stoi(args[1])
+                }
+            }
+        }
+    }
     return instruction_map;
 }
