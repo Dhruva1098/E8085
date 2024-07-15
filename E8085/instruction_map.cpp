@@ -282,6 +282,20 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more argumenst were given" << std::endl;
         }
     };
+    // CPI
+    instruction_map["CPI"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+            try {
+                uint8_t data = (uint8_t)std::stoi(args[0]);
+                CPI(data);
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
+            }
+        } else {
+            std::cerr << "ERROR function expects exactly one argument, "
+            << "no or more arguments were given" << std::endl;
+        }
+    };
     
     return instruction_map;
 }
