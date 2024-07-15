@@ -220,49 +220,8 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             << "no or more arguments were given" << std::endl;
         }
     };
-    // INX
-    instruction_map["INX"] = [](const std::vector<std::string>& args) {
-        if (args.size() == 1) {
-            try {
-                uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
-                INX(reg_name);
-            } catch (const std::invalid_argument& ex) {
-                std::cerr << "ERROR " << ex.what() << std::endl;
-            }
-        } else {
-            std::cerr << "ERROR: function expects exactly one argument, "
-            << "no or more arguments were given" << std::endl;
-        }
-    };
-    // DCX
-    instruction_map["DCX"] = [](const std::vector<std::string>& args) {
-        if (args.size() == 1) {
-            try {
-                uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
-                DCX(reg_name);
-            } catch (const std::invalid_argument& ex) {
-                std::cerr << "ERROR " << ex.what() << std::endl;
-            }
-        } else {
-            std::cerr << "ERROR: function exppects exactly one argument, "
-            << "no or more arguments were given" << std::endl;
-        }
-    };
-    // DCR
-    instruction_map["DCR"] = [](const std::vector<std::string>& args) {
-        if (args.size() == 1) {
-            try {
-                uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
-                DCR(mem_location);
-            } catch (const std::invalid_argument& ex) {
-                std::cerr << "ERROR " << ex.what() << std::endl;
-            }
-        } else {
-            std::cerr << "ERROR: function expects exactly one argument, "
-            << "no or more arguments were given" << std::endl;
-        }
-    };
-    // LOGICAL INSTRUCTONS
+    // INX, DCR, DCX need to be defined first in instriction_set.cpp
+// LOGICAL INSTRUCTONS
     // CMP
     instruction_map["CMP"] = [](const std::vector<std::string>& args) {
         if (args.size() == 1) {
@@ -404,10 +363,20 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             try {
                 if (args[0].length() == 4) {
                     uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
-                    uint8_t data = (uint8_t)std::stoi(args[1])
+                    uint8_t data = (uint8_t)std::stoi(args[1]);
+                    MOV_MD(mem_location, data);
+                } else {
+                    uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
+                    uint16_t mem_location = (uint16_t)string_to_hex(args[1]);
+                    MOV_RM(reg_name, mem_location);
                 }
+            } catch (const std::invalid_argument& ex) {
+                std::cerr << "ERROR: " << ex.what() << std::endl;
             }
+        } else {
+            std::cerr << "ERROR function expects exactly two arguments, "
+            << "less or more were given" << std::endl;
         }
-    }
+    };
     return instruction_map;
 }
