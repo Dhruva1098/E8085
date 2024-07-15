@@ -260,7 +260,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     instruction_map["ANA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 4) {
             try {
-                if(args[0].length() == 4) {
+                if (args[0].length() == 4) {
                     uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
                     ANA_M(mem_location);
                 } else {
@@ -293,7 +293,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     instruction_map["ORA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 4) {
             try {
-                if(args[0].length() == 4) {
+                if (args[0].length() == 4) {
                     uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
                     ORA_M(mem_location);
                 } else {
@@ -327,7 +327,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     instruction_map["XRA"] = [](const std::vector<std::string>& args) {
         if (args.size() == 4) {
             try {
-                if(args[0].length() == 4) {
+                if (args[0].length() == 4) {
                     uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
                     XRA_M(mem_location);
                 } else {
@@ -360,7 +360,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
 // TWO WORD INSTRUCTIONS
     // MOV
     instruction_map["MOV"] = [](const std::vector<std::string>& args) {
-        if(args.size() == 2) {
+        if (args.size() == 2) {
             try {
                 if (args[0].length() == 4) {
                     uint16_t mem_location = (uint16_t)string_to_hex(args[0]);
@@ -381,7 +381,7 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
     };
     // MVI
     instruction_map["MVI"] = [](const std::vector<std::string>& args) {
-        if(args.size() == 2) {
+        if (args.size() == 2) {
             try {
                 uint8_t reg_name = (uint8_t)string_to_enum(args[0]);
                 uint8_t data = (uint8_t)std::stoi(args[1]);
