@@ -19,11 +19,12 @@ int main() {
 
     for (int i = 0; i <= 3; i++) {
         std::string input_line;
-        std::cout << "value at acc: " << (unsigned)SPR[ACC] << "\n";
-        std::cout << "value at memory B: " << (unsigned)GPR[B] << "\n";
         std::getline(std::cin, input_line);
-        // Parse and execute
         parse_and_execute(input_line, function_map);
+        std::cout << "value at acc: " << (unsigned)SPR[ACC] << "\n";
+        std::cout << "value at B:" << (unsigned)GPR[B] << "\n";
+        std::cout << "value at mem 1000 :" << (unsigned)MEMORY[0x1000] << " \n";
+        // Parse and execute
     }
     std::cout << (unsigned)SPR[ACC];
     return 0;
