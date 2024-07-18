@@ -412,3 +412,11 @@ void CMC() {
 void STC() {
     FLAG.set_carry();
 }
+// JUMP INSTRUCTIONS
+uint16_t JMP(const uint16_t ins_addr) {
+    return ins_addr;
+}
+uint16_t JC(uint16_t ins_addr) {
+    if (FLAG.get_carry()) return ins_addr;
+    else return -1;
+}

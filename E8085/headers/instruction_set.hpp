@@ -102,4 +102,15 @@ void XRA_M(const uint16_t& M);  // M
 void XRI(const uint8_t& data);  // D
 void CMC();  // void
 void STC();  // void
+// JUMP INSTRUCTIONS
+uint16_t JMP(const uint16_t ins_addr);
+uint16_t JC(const uint16_t ins_addr);
+uint16_t JNC(const uint16_t ins_addr);
+uint16_t JZ(const uint16_t ins_addr);
+uint16_t JNZ(const uint16_t ins_addr);
+uint16_t JPE(const uint16_t ins_addr);
+uint16_t JPO(const uint16_t ins_addr);
+uint16_t JM(const uint16_t ins_addr);
+uint16_t JP(const uint16_t ins_addr);
+
 #endif  // E8085_HEADERS_INSTRUCTION_SET_HPP_

@@ -16,6 +16,7 @@ int main() {
     MEMORY[0x0000] = 13;
     // Input line
     std::vector<std::string> instructions;
+    std::cout << "Instructions start from 0000" << std::endl;
     while (1) {
         std::string input_line;
         std::getline(std::cin, input_line);
