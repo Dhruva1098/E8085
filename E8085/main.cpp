@@ -15,12 +15,13 @@ int main() {
     GPR[C] = 20;
     MEMORY[0x0000] = 13;
     // Input line
-
+    std::vector<std::string> instructions;
     while (1) {
         std::string input_line;
         std::getline(std::cin, input_line);
-        if (input_line != "exit") break;
+        if (input_line == "exit") break;
+        instructions.push_back(input_line);
     }
+    parse_and_execute_vector(instructions);
     std::cout << (unsigned)SPR[ACC];
-    return 0;
 }
