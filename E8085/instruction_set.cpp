@@ -417,6 +417,44 @@ uint16_t JMP(const uint16_t ins_addr) {
     return ins_addr;
 }
 uint16_t JC(uint16_t ins_addr) {
-    if (FLAG.get_carry()) return ins_addr;
-    else return -1;
+    if (FLAG.get_carry()) {
+        return ins_addr;
+    } else {
+        return -1;
+    }
+}
+uint16_t JNC(uint16_t ins_addr) {
+    if (!FLAG.get_carry()) {
+        return ins_addr;
+    } else {
+        return -1;
+    }
+}
+uint16_t JZ(uint16_t ins_addr) {
+    if (FLAG.get_zero()) {
+        return ins_addr;
+    } else {
+        return -1;
+    }
+}
+uint16_t JNZ(uint16_t ins_addr) {
+    if (!FLAG.get_zero()) {
+        return ins_addr;
+    } else {
+        return -1;
+    }
+}
+uint16_t JPE(uint16_t ins_addr) {
+    if (FLAG.get_parity()) {
+        return ins_addr;
+    } else {
+        return -1;
+    }
+}
+uint16_t JPO(uint16_t ins_addr) {
+    if (!FLAG.get_parity()) {
+        return ins_addr;
+    } else {
+        return -1;
+    }
 }
