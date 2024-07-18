@@ -1,10 +1,11 @@
 // Copyright 2024 Dhruva Sharma
 
 #include "headers/parser.h"
-#include "headers/instruction_map.h"
 
 #include <sstream>
 #include <iostream>
+
+#include "headers/instruction_map.h"
 
 const auto& instruction_map = create_instruction_map();
 void parse_and_execute(const std::string& input,
@@ -25,7 +26,7 @@ void parse_and_execute(const std::string& input,
     }
 }
 void parse_and_execute_vector(const std::vector<std::string>& instruction_vector) {
-    for(auto i: instruction_vector) {
+    for (auto i : instruction_vector) {
         parse_and_execute(i, instruction_map);
     }
 }
