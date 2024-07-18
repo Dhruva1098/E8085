@@ -8,6 +8,7 @@
 #include <map>
 #include <vector>
 
+void parse_and_execute_vector(const std::vector<std::string>& instruction_vector);
 void parse_and_execute(
                        const std::string& input,
                        const std::map<std::string,

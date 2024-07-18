@@ -11,20 +11,15 @@
 
 int main() {
     // Create the function map
-    const auto& function_map = create_instruction_map();
     GPR[B] = 10;
     GPR[C] = 20;
     MEMORY[0x0000] = 13;
     // Input line
 
-    for (int i = 0; i <= 3; i++) {
+    while (1) {
         std::string input_line;
         std::getline(std::cin, input_line);
-        parse_and_execute(input_line, function_map);
-        std::cout << "value at acc: " << (unsigned)SPR[ACC] << "\n";
-        std::cout << "value at B:" << (unsigned)GPR[B] << "\n";
-        std::cout << "value at mem 1000 :" << (unsigned)MEMORY[0x1000] << " \n";
-        // Parse and execute
+        if (input_line != "exit") break;
     }
     std::cout << (unsigned)SPR[ACC];
     return 0;
