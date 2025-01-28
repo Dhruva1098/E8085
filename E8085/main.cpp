@@ -17,7 +17,7 @@ int main() {
     // Input line
     std::vector<std::string> instructions;
     std::cout << "Instructions start from 0000" << std::endl;
-    while (1) {
+    while (true) {
         std::string input_line;
         std::getline(std::cin, input_line);
         if (input_line == "exit") break;

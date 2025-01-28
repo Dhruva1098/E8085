@@ -2,6 +2,7 @@
 
 #include "headers/instruction_map.h"
 
+#include <cstdint>
 #include <iostream>
 
 #include "headers/instruction_set.hpp"
@@ -220,6 +221,12 @@ const std::map<std::string, std::function<void(const std::vector<std::string>&)>
             std::cerr << "ERROR: function expects exactly one argument, "
             << "no or more arguments were given" << std::endl;
         }
+    };
+    //INX
+    instruction_map["INX"] = [](const std::vector<std::string>& args) {
+        if (args.size() == 1) {
+        
+    }
     };
     // INX, DCR, DCX need to be defined first in instriction_set.cpp
 // LOGICAL INSTRUCTONS

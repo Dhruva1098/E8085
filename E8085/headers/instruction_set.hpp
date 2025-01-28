@@ -3,10 +3,7 @@
 #ifndef E8085_HEADERS_INSTRUCTION_SET_HPP_
 #define E8085_HEADERS_INSTRUCTION_SET_HPP_
 
-#include <iostream>
 #include <vector>
-#include <map>
-#include <functional>
 #include <string>
 
 enum {

@@ -95,6 +95,7 @@ void POP(const uint8_t& R) {
     } else { std::cout << "ERROR:UNEXPECTED ADDRESS"; }
 }
 // ARITHMETIC OPERATIONS
+
 void ADD_R(const uint8_t& R) {
     if (aux_carry_addition_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
     } else { FLAG.reset_aux_carry(); }
@@ -181,6 +182,9 @@ void AMC(const uint16_t& M) {
     } else { FLAG.reset_sign(); }
     if (parity_helper(SPR[ACC])) { FLAG.set_parity();
     } else { FLAG.reset_parity(); }
+}
+void INX(const uint8_t& R) {
+    ADI(1);
 }
 void SUB_R(const uint8_t& R) {
     if (aux_carry_subtraction_helper(SPR[ACC], GPR[R])) { FLAG.set_aux_carry();
